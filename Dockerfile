@@ -16,15 +16,20 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 #========================
 # Miscellaneous packages
 # OpenJDK8
+# rlwrap is for azure-cli
+# groff is for aws-cli
 #========================
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
     ca-certificates \
     openjdk-8-jdk \
-    unzip \
-    wget \
-    curl \
+    tar zip unzip \
+    wget curl \
     git \
+    build-essential \
+    less nano \
+    python python-pip groff \
+    rlwrap \
   && rm -rf /var/lib/apt/lists/* \
   && sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
 
@@ -51,10 +56,10 @@ RUN  mkdir -p /opt/selenium \
 #========================================
 # Add normal user with passwordless sudo
 #========================================
-RUN useradd seluser --shell /bin/bash --create-home \
-  && usermod -a -G sudo seluser \
+RUN useradd jenkins --shell /bin/bash --create-home \
+  && usermod -a -G sudo jenkins \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
-  && echo 'seluser:secret' | chpasswd
+  && echo 'jenkins:secret' | chpasswd
 
 # https://raw.githubusercontent.com/SeleniumHQ/docker-selenium/master/NodeFirefox/Dockerfile
 
@@ -79,7 +84,36 @@ COPY config.json /opt/selenium/config.json
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN chmod +x /opt/bin/entry_point.sh
 
-USER seluser
+
+#====================================
+# Cloud Foundry CLI
+# https://github.com/cloudfoundry/cli
+#====================================
+RUN wget -O - "http://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -C /usr/local/bin -zxf -
+
+#====================================
+# AWS CLI
+#====================================
+RUN pip install awscli
+
+# compatibility with CloudBees AWS CLI Plugin which expects pip to be installed as user
+RUN mkdir -p /home/jenkins/.local/bin/ \
+  && ln -s /usr/bin/pip /home/jenkins/.local/bin/pip \
+  && chown -R jenkins:jenkins /home/jenkins/.local
+
+#====================================
+# AZURE CLI
+# See https://hub.docker.com/r/microsoft/azure-cli/~/dockerfile/
+#====================================
+
+RUN curl https://deb.nodesource.com/node_0.12/pool/main/n/nodejs/nodejs_0.12.7-1nodesource1~vivid1_amd64.deb > node.deb \
+      && dpkg -i node.deb \
+      && rm node.deb \
+      && npm install --global azure-cli@0.9.9
+
+USER jenkins
+
+USER root
 
 CMD ["/opt/bin/entry_point.sh"]
 
