@@ -113,7 +113,8 @@ RUN curl https://deb.nodesource.com/node_0.12/pool/main/n/nodejs/nodejs_0.12.7-1
 
 USER jenkins
 
-USER root
+# for dev purpose
+# USER root
 
 CMD ["/opt/bin/entry_point.sh"]
 
