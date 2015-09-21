@@ -1,6 +1,23 @@
 FROM ubuntu:15.04
 MAINTAINER Cyrille Le Clerc <cleclerc@cloudbees.com>
 
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 #################################################
 # Inspired by
 # https://github.com/SeleniumHQ/docker-selenium/blob/master/Base/Dockerfile
@@ -18,6 +35,7 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 # OpenJDK8
 # rlwrap is for azure-cli
 # groff is for aws-cli
+# tree is convenient for troubleshooting builds
 #========================
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
@@ -27,7 +45,7 @@ RUN apt-get update -qqy \
     wget curl \
     git \
     build-essential \
-    less nano \
+    less nano tree \
     python python-pip groff \
     rlwrap \
   && rm -rf /var/lib/apt/lists/* \
