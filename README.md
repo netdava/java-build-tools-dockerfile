@@ -7,6 +7,7 @@ We have decided to bundle many tools in the same imge to cover as many Java use 
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`0.0.2` (*0.0.2/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.2/Dockerfile)
 -   [`0.0.1` (*0.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.1/Dockerfile)
 
 # How to use this Docker image
@@ -16,12 +17,14 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 # Docker image details
 
 -   OS: Ubuntu 15.04
--   Common tools: unzip, wget, curl, git 
--   Java: OpenJDK 8, Maven 3.3
--   Web Browser tests: Firefox, Selenium
--   AWS CLI
--   Azure CLI
--   Cloud Foundry CLI
+-   Common tools: unzip, wget, curl, git
+-   Build Essential: make, gcc (latest)
+-   Java: OpenJDK 8 (latest), Maven 3.3.3
+-   Web Browser tests: Firefox (latest), Selenium (2.47.1)
+-   Node.js (0.12)
+-   AWS CLI (latest)
+-   Azure CLI (0.9.9)
+-   Cloud Foundry CLI (latest)
 
 # Release Notes
 
