@@ -1,11 +1,13 @@
-
 # Description
 
 Docker image with all the commonly used tools to build Java applications on Jenkins slaves.
 
-# Status
+We have decided to bundle many tools in the same imge to cover as many Java use cases as possible. In a second iteration, we plan to offer granularity in the tools installed on the image, maybe using a `Dockerfile`generator.
 
-This docker image is not stable, it's a work in progress
+# Supported tags and respective `Dockerfile` links
+
+-   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`0.0.1` (*0.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.1/Dockerfile)
 
 # How to use this Docker image
 
@@ -13,17 +15,17 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 
 # Docker image details
 
-* OS: Ubuntu 15.04
-* Common tools: unzip, wget, curl, git 
-* Java: OpenJDK 8, Maven 3.3
-* Web Browser tests: Firefox, Selenium
-* AWS CLI
-* Azure CLI
-* Cloud Foundry CLI
+-   OS: Ubuntu 15.04
+-   Common tools: unzip, wget, curl, git 
+-   Java: OpenJDK 8, Maven 3.3
+-   Web Browser tests: Firefox, Selenium
+-   AWS CLI
+-   Azure CLI
+-   Cloud Foundry CLI
 
 # Release Notes
 
-See the [GitHub release notes](https://github.com/cloudbees/java-build-tools-dockerfile/releases)
+See the [GitHub release notes](https://github.com/cloudbees/java-build-tools-dockerfile/releases).
 
 # About this repository
 
