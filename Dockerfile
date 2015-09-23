@@ -149,6 +149,6 @@ USER jenkins
 # for dev purpose
 # USER root
 
-CMD ["/opt/bin/entry_point.sh"]
+ENTRYPOINT ["/opt/bin/entry_point.sh"]
 
 EXPOSE 4444
