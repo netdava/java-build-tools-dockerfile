@@ -25,6 +25,7 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   AWS CLI (latest)
 -   Azure CLI (0.9.9)
 -   Cloud Foundry CLI (latest)
+-   Open Shift V3 CLI (1.0.6)
 
 # Release Notes
 

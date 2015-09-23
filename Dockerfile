@@ -129,6 +129,16 @@ RUN curl https://deb.nodesource.com/node_0.12/pool/main/n/nodejs/nodejs_0.12.7-1
       && rm node.deb \
       && npm install --global azure-cli@0.9.9
 
+#====================================
+# OPENSHIFT V3 CLI
+# Only install "oc" executable, don't install "openshift", "oadmin"...
+#====================================
+RUN mkdir /var/tmp/openshift \
+      && wget -O - "https://github.com/openshift/origin/releases/download/v1.0.6/openshift-origin-v1.0.6-2695cdc-linux-amd64.tar.gz" \
+      | tar -C /var/tmp/openshift -zxf - \
+      && mv /var/tmp/openshift/oc /usr/local/bin \
+      && rm -rf /var/tmp/openshift
+
 USER jenkins
 
 # for dev purpose
