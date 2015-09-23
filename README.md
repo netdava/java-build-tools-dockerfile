@@ -20,7 +20,7 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   Common tools: unzip, wget, curl, git
 -   Build Essential: make, gcc (latest)
 -   Java: OpenJDK 8 (latest), Maven 3.3.3
--   Web Browser tests: Firefox (latest), Selenium (2.47.1)
+-   Web Browser tests: XVFB (latest), Firefox (latest), Selenium (2.47.1)
 -   Node.js (0.12)
 -   AWS CLI (latest)
 -   Azure CLI (0.9.9)

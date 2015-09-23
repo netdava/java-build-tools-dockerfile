@@ -81,18 +81,23 @@ RUN useradd jenkins --shell /bin/bash --create-home \
 
 # https://raw.githubusercontent.com/SeleniumHQ/docker-selenium/master/NodeFirefox/Dockerfile
 
-#=========
-# Firefox
-#=========
+#===============
+# XVFB & FIREFOX
+#===============
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
-    firefox \
+    xvfb firefox \
   && rm -rf /var/lib/apt/lists/*
 
 #========================
 # Selenium Configuration
 #========================
 COPY config.json /opt/selenium/config.json
+
+ENV SCREEN_WIDTH 1360
+ENV SCREEN_HEIGHT 1020
+ENV SCREEN_DEPTH 24
+ENV DISPLAY :99.0
 
 # https://github.com/SeleniumHQ/docker-selenium/blob/master/StandaloneFirefox/Dockerfile
 
