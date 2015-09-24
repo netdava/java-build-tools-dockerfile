@@ -32,7 +32,7 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 
 #========================
 # Miscellaneous packages
-# iproute for the Jenkins Docker Custom Build Environment Plugin
+# iproute which is surprisingly not available in ubuntu:15.04 but is available in ubuntu:latest
 # OpenJDK8
 # rlwrap is for azure-cli
 # groff is for aws-cli
