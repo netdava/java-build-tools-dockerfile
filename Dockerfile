@@ -32,6 +32,7 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 
 #========================
 # Miscellaneous packages
+# iproute for the Jenkins Docker Custom Build Environment Plugin
 # OpenJDK8
 # rlwrap is for azure-cli
 # groff is for aws-cli
@@ -39,6 +40,7 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 #========================
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
+    iproute \
     ca-certificates \
     openjdk-8-jdk \
     tar zip unzip \
