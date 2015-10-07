@@ -137,6 +137,12 @@ RUN curl https://deb.nodesource.com/node_0.12/pool/main/n/nodejs/nodejs_0.12.7-1
       && npm install --global azure-cli@0.9.9
 
 #====================================
+# Kubernetes CLI
+# See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
+#====================================
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+
+#====================================
 # OPENSHIFT V3 CLI
 # Only install "oc" executable, don't install "openshift", "oadmin"...
 #====================================
