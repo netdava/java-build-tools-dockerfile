@@ -152,6 +152,13 @@ RUN mkdir /var/tmp/openshift \
       && mv /var/tmp/openshift/oc /usr/local/bin \
       && rm -rf /var/tmp/openshift
 
+#====================================
+# JMETER
+#====================================
+RUN mkdir /opt/jmeter \
+      && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-2.13.tgz" \
+      | tar -xz --strip=1 -C /opt/jmeter
+
 USER jenkins
 
 # for dev purpose
