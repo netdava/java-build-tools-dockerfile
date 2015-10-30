@@ -7,7 +7,8 @@ We have decided to bundle many tools in the same imge to cover as many Java use 
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
--   [`0.0.3` (*0.0.2/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.3/Dockerfile)
+-   [`0.0.4` (*0.0.4/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.4/Dockerfile)
+-   [`0.0.3` (*0.0.3/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.3/Dockerfile)
 -   [`0.0.2` (*0.0.2/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.2/Dockerfile)
 -   [`0.0.1` (*0.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.1/Dockerfile)
 
@@ -28,6 +29,7 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   Cloud Foundry CLI (latest)
 -   Open Shift V3 CLI (1.0.6)
 -   JMeter (2.13) located in `/opt/jmeter`
+-   Kubernetes CLI (1.0.1)
 
 # Release Notes
 
