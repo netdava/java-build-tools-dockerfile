@@ -21,8 +21,15 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   OS: Ubuntu 15.04
 -   Common tools: unzip, wget, curl, git
 -   Build Essential: make, gcc (latest)
--   Java: OpenJDK 8 (latest), Maven 3.3.3 located in `/usr/share/maven/`
--   Web Browser tests: XVFB (latest), Firefox (latest) at `/usr/bin/firefox`, Selenium (2.47.1) located in `/opt/selenium/`
+-   Java: OpenJDK 8 (latest)
+    - `cloudbees/java-build-tools:0.0.4`: 1.8.0_45
+    - `cloudbees/java-build-tools:0.0.3`: 1.8.0_45
+-   Maven 3.3.3 located in `/usr/share/maven/`
+-   Web Browser tests: XVFB (latest)
+-   Firefox (latest) at `/usr/bin/firefox`
+    - `cloudbees/java-build-tools:0.0.4`: Mozilla Firefox 41.0.2
+    - `cloudbees/java-build-tools:0.0.3`: Mozilla Firefox 41.0.2
+-   Selenium (2.47.1) located in `/opt/selenium/`
 -   Node.js (0.12)
 -   AWS CLI (latest)
 -   Azure CLI (0.9.9)
