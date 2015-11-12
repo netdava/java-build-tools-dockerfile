@@ -71,7 +71,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Selenium
 #==========
 RUN  mkdir -p /opt/selenium \
-  && wget --no-verbose http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar -O /opt/selenium/selenium-server-standalone.jar
+  && wget --no-verbose http://selenium-release.storage.googleapis.com/2.48/selenium-server-standalone-2.48.2.jar -O /opt/selenium/selenium-server-standalone.jar
 
 #========================================
 # Add normal user with passwordless sudo
@@ -134,20 +134,20 @@ RUN mkdir -p /home/jenkins/.local/bin/ \
 RUN curl https://deb.nodesource.com/node_0.12/pool/main/n/nodejs/nodejs_0.12.7-1nodesource1~vivid1_amd64.deb > node.deb \
       && dpkg -i node.deb \
       && rm node.deb \
-      && npm install --global azure-cli@0.9.9
+      && npm install --global azure-cli@0.9.11
 
 #====================================
 # Kubernetes CLI
 # See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
 #====================================
-RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.1.1/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 #====================================
 # OPENSHIFT V3 CLI
 # Only install "oc" executable, don't install "openshift", "oadmin"...
 #====================================
 RUN mkdir /var/tmp/openshift \
-      && wget -O - "https://github.com/openshift/origin/releases/download/v1.0.6/openshift-origin-v1.0.6-2695cdc-linux-amd64.tar.gz" \
+      && wget -O - "https://github.com/openshift/origin/releases/download/v1.0.8/openshift-origin-v1.0.8-6a2b026-linux-amd64.tar.gz" \
       | tar -C /var/tmp/openshift -zxf - \
       && mv /var/tmp/openshift/oc /usr/local/bin \
       && rm -rf /var/tmp/openshift
@@ -158,6 +158,14 @@ RUN mkdir /var/tmp/openshift \
 RUN mkdir /opt/jmeter \
       && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-2.13.tgz" \
       | tar -xz --strip=1 -C /opt/jmeter
+
+#====================================
+# MYSQL CLIENT
+#====================================
+RUN apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install \
+    mysql-client \
+  && rm -rf /var/lib/apt/lists/*
 
 USER jenkins
 
