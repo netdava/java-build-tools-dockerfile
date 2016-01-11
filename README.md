@@ -7,6 +7,7 @@ We have decided to bundle many tools in the same imge to cover as many Java use 
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`0.0.6` (*0.0.6/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.6/Dockerfile)
 -   [`0.0.5` (*0.0.5/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.5/Dockerfile)
 -   [`0.0.4` (*0.0.4/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.4/Dockerfile)
 -   [`0.0.3` (*0.0.3/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.3/Dockerfile)
@@ -22,35 +23,54 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   OS: Ubuntu 15.04
 -   Common tools: unzip, wget, curl, git
 -   Make (latest)
+    - `cloudbees/java-build-tools:0.0.6`: 4.0
     - `cloudbees/java-build-tools:0.0.5`: 4.0
 -   gcc (latest)
+    - `cloudbees/java-build-tools:0.0.6`: 4.9.2-10ubuntu13
     - `cloudbees/java-build-tools:0.0.5`: 4.9.2-10ubuntu13
 -   Java: OpenJDK 8 (latest)
+    - `cloudbees/java-build-tools:0.0.6`: 1.8.0_45
     - `cloudbees/java-build-tools:0.0.5`: 1.8.0_45
     - `cloudbees/java-build-tools:0.0.4`: 1.8.0_45
     - `cloudbees/java-build-tools:0.0.3`: 1.8.0_45
--   Maven 3.3.3 located in `/usr/share/maven/`
+-   Maven located in `/usr/share/maven/`
+    - `cloudbees/java-build-tools:0.0.6`: 3.3.9
+    - `cloudbees/java-build-tools:0.0.5`: 3.3.3
+-   Node.js
+    - `cloudbees/java-build-tools:0.0.6`: 4.2.4
+    - `cloudbees/java-build-tools:0.0.5`: 0.12
+-   Bower
+    - `cloudbees/java-build-tools:0.0.6`: 1.7.2
+-   Grunt CLI
+    - `cloudbees/java-build-tools:0.0.6`: 0.1.13
+-   Gulp
+    - `cloudbees/java-build-tools:0.0.6`: 3.9.0
 -   Web Browser tests: XVFB (latest)
 -   Firefox (latest) at `/usr/bin/firefox`
+    - `cloudbees/java-build-tools:0.0.6`: Mozilla Firefox 43.0.4
     - `cloudbees/java-build-tools:0.0.5`: Mozilla Firefox 42.0
     - `cloudbees/java-build-tools:0.0.4`: Mozilla Firefox 41.0.2
     - `cloudbees/java-build-tools:0.0.3`: Mozilla Firefox 41.0.2
 -   Selenium at `/opt/selenium/selenium-server-standalone.jar`
+    - `cloudbees/java-build-tools:0.0.6`: 2.48.2
     - `cloudbees/java-build-tools:0.0.5`: 2.48.2
     - `cloudbees/java-build-tools:0.0.4`: 2.47.1
     - `cloudbees/java-build-tools:0.0.3`: 2.47.1
--   Node.js (0.12)
--   AWS CLI (latest)
+-   AWS CLI
+   - `cloudbees/java-build-tools:0.0.6`: 1.9.17
    - `cloudbees/java-build-tools:0.0.5`: aws-cli/1.9.6 Python/2.7.9 Linux/4.1.12-boot2docker botocore/1.3.6
 -   Azure CLI
+    - `cloudbees/java-build-tools:0.0.6`: 0.9.13
     - `cloudbees/java-build-tools:0.0.5`: 0.9.11
     - `cloudbees/java-build-tools:0.0.4`: 0.9.9
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`
 -   Open Shift V3 CLI at `/usr/local/bin/oc`
+    - `cloudbees/java-build-tools:0.0.6`: 1.1.0.1
     - `cloudbees/java-build-tools:0.0.5`: 1.0.8
     - `cloudbees/java-build-tools:0.0.4`: 1.0.6
 -   JMeter (2.13) located in `/opt/jmeter/`
 -   Kubernetes CLI at `/usr/local/bin/kubectl`
+    - `cloudbees/java-build-tools:0.0.5`: 1.1.3
     - `cloudbees/java-build-tools:0.0.5`: 1.1.1
     - `cloudbees/java-build-tools:0.0.4`: 1.0.1
 -   MySQL Client (latest)
@@ -67,6 +87,7 @@ This repository is available on [github.com/cloudbees/java-build-tools-dockerfil
 ## Supported Docker versions
 
 This image has been tested with Docker version:
+- `cloudbees/java-build-tools:0.0.6`: 1.9.1
 - `cloudbees/java-build-tools:0.0.5`: 1.9.0
 - `cloudbees/java-build-tools:0.0.4`: 1.8.1
 

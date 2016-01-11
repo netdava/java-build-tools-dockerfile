@@ -59,7 +59,7 @@ RUN [ -f "/etc/ssl/certs/java/cacerts" ] || /var/lib/dpkg/info/ca-certificates-j
 #==========
 # Maven
 #==========
-ENV MAVEN_VERSION 3.3.3
+ENV MAVEN_VERSION 3.3.9
 
 RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
@@ -109,7 +109,6 @@ ENV DISPLAY :99.0
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN chmod +x /opt/bin/entry_point.sh
 
-
 #====================================
 # Cloud Foundry CLI
 # https://github.com/cloudfoundry/cli
@@ -127,28 +126,38 @@ RUN mkdir -p /home/jenkins/.local/bin/ \
   && chown -R jenkins:jenkins /home/jenkins/.local
 
 #====================================
+# NODE JS
+# See https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+#====================================
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash \
+    && apt-get install -y nodejs
+
+#====================================
 # AZURE CLI
 # See https://hub.docker.com/r/microsoft/azure-cli/~/dockerfile/
 #====================================
 
-RUN curl https://deb.nodesource.com/node_0.12/pool/main/n/nodejs/nodejs_0.12.7-1nodesource1~vivid1_amd64.deb > node.deb \
-      && dpkg -i node.deb \
-      && rm node.deb \
-      && npm install --global azure-cli@0.9.11
+RUN npm install --global azure-cli@0.9.13
+
+#====================================
+# BOWER, GRUNT, GULP
+#====================================
+
+RUN npm install --global grunt-cli@0.1.13 bower@1.7.2 gulp@3.9.0
 
 #====================================
 # Kubernetes CLI
 # See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
 #====================================
-RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.1.1/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.1.3/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 #====================================
 # OPENSHIFT V3 CLI
 # Only install "oc" executable, don't install "openshift", "oadmin"...
 #====================================
 RUN mkdir /var/tmp/openshift \
-      && wget -O - "https://github.com/openshift/origin/releases/download/v1.0.8/openshift-origin-v1.0.8-6a2b026-linux-amd64.tar.gz" \
-      | tar -C /var/tmp/openshift -zxf - \
+      && wget -O - "https://github.com/openshift/origin/releases/download/v1.1.0.1/openshift-origin-client-tools-v1.1.0.1-bf56e23-linux-64bit.tar.gz" \
+      | tar -C /var/tmp/openshift --strip-components=1 -zxf - \
       && mv /var/tmp/openshift/oc /usr/local/bin \
       && rm -rf /var/tmp/openshift
 
