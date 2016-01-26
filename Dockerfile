@@ -41,7 +41,7 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
     iproute \
-    openssh-client \
+    openssh-client ssh-askpass\
     ca-certificates \
     openjdk-8-jdk \
     tar zip unzip \
