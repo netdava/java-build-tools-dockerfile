@@ -7,7 +7,7 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
--   [`0.0.7` (*0.0.7/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.7/Dockerfile)
+-   [`0.0.7.1` (*0.0.7.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.7.1/Dockerfile)
 -   [`0.0.6` (*0.0.6/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.6/Dockerfile)
 -   [`0.0.5` (*0.0.5/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.5/Dockerfile)
 -   [`0.0.4` (*0.0.4/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.4/Dockerfile)
@@ -19,7 +19,7 @@ We have decided to bundle many tools in the same image to cover as many Java use
 
 This Docker image is intended to be used with the [Jenkins CloudBees Docker Custom Build Environment Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Custom+Build+Environment+Plugin) and the [Jenkins Docker Workflow Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Workflow+Plugin).
 
-# Version 0.0.7
+# Version 0.0.7.1
 -   OS: Ubuntu 15.04
 -   Common tools: openssh-client, unzip, wget, curl, git
 -   AWS CLI: aws-cli/1.10.0
