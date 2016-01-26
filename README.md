@@ -2,7 +2,7 @@
 
 Docker image with all the commonly used tools to build Java applications on Jenkins slaves.
 
-We have decided to bundle many tools in the same imge to cover as many Java use cases as possible. In a second iteration, we plan to offer granularity in the tools installed on the image, maybe using a `Dockerfile` generator.
+We have decided to bundle many tools in the same image to cover as many Java use cases as possible. In a second iteration, we plan to offer granularity in the tools installed on the image, maybe using a `Dockerfile` generator.
 
 # Supported tags and respective `Dockerfile` links
 
@@ -18,63 +18,52 @@ We have decided to bundle many tools in the same imge to cover as many Java use 
 
 This Docker image is intended to be used with the [Jenkins CloudBees Docker Custom Build Environment Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Custom+Build+Environment+Plugin) and the [Jenkins Docker Workflow Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Workflow+Plugin).
 
-# Docker image details
+# Version 0.0.7
+-   OS: Ubuntu 15.04
+-   Common tools: openssh-client, unzip, wget, curl, git
+-   Make (latest): 4.0
+-   gcc (latest): 4.9.2-10ubuntu13
+-   Java: OpenJDK 8 (latest): 1.8.0_45
+-   Maven located in `/usr/share/maven/`: 3.3.9
+-   Node.js: 4.2.4
+-   Bower: 1.7.2
+-   Grunt CLI: 0.1.13
+-   Gulp: 3.9.0
+-   Web Browser tests: XVFB (latest)
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 43.0.4
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.48.2
+-   AWS CLI: 1.9.17
+-   Azure CLI: 0.9.14
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.1.1.1
+-   JMeter (2.13) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.1.4
+-   MySQL Client (latest): 5.6.27
+
+# Version 0.0.6
+
+This version has been tested with Docker 1.9.1
 
 -   OS: Ubuntu 15.04
 -   Common tools: unzip, wget, curl, git
--   Make (latest)
-    - `cloudbees/java-build-tools:0.0.6`: 4.0
-    - `cloudbees/java-build-tools:0.0.5`: 4.0
--   gcc (latest)
-    - `cloudbees/java-build-tools:0.0.6`: 4.9.2-10ubuntu13
-    - `cloudbees/java-build-tools:0.0.5`: 4.9.2-10ubuntu13
--   Java: OpenJDK 8 (latest)
-    - `cloudbees/java-build-tools:0.0.6`: 1.8.0_45
-    - `cloudbees/java-build-tools:0.0.5`: 1.8.0_45
-    - `cloudbees/java-build-tools:0.0.4`: 1.8.0_45
-    - `cloudbees/java-build-tools:0.0.3`: 1.8.0_45
--   Maven located in `/usr/share/maven/`
-    - `cloudbees/java-build-tools:0.0.6`: 3.3.9
-    - `cloudbees/java-build-tools:0.0.5`: 3.3.3
--   Node.js
-    - `cloudbees/java-build-tools:0.0.6`: 4.2.4
-    - `cloudbees/java-build-tools:0.0.5`: 0.12
--   Bower
-    - `cloudbees/java-build-tools:0.0.6`: 1.7.2
--   Grunt CLI
-    - `cloudbees/java-build-tools:0.0.6`: 0.1.13
--   Gulp
-    - `cloudbees/java-build-tools:0.0.6`: 3.9.0
+-   Make (latest): 4.0
+-   gcc (latest): 4.9.2-10ubuntu13
+-   Java: OpenJDK 8 (latest): 1.8.0_45
+-   Maven located in `/usr/share/maven/`: 3.3.9
+-   Node.js: 4.2.4
+-   Bower: 1.7.2
+-   Grunt CLI: 0.1.13
+-   Gulp: 3.9.0
 -   Web Browser tests: XVFB (latest)
--   Firefox (latest) at `/usr/bin/firefox`
-    - `cloudbees/java-build-tools:0.0.6`: Mozilla Firefox 43.0.4
-    - `cloudbees/java-build-tools:0.0.5`: Mozilla Firefox 42.0
-    - `cloudbees/java-build-tools:0.0.4`: Mozilla Firefox 41.0.2
-    - `cloudbees/java-build-tools:0.0.3`: Mozilla Firefox 41.0.2
--   Selenium at `/opt/selenium/selenium-server-standalone.jar`
-    - `cloudbees/java-build-tools:0.0.6`: 2.48.2
-    - `cloudbees/java-build-tools:0.0.5`: 2.48.2
-    - `cloudbees/java-build-tools:0.0.4`: 2.47.1
-    - `cloudbees/java-build-tools:0.0.3`: 2.47.1
--   AWS CLI
-   - `cloudbees/java-build-tools:0.0.6`: 1.9.17
-   - `cloudbees/java-build-tools:0.0.5`: aws-cli/1.9.6 Python/2.7.9 Linux/4.1.12-boot2docker botocore/1.3.6
--   Azure CLI
-    - `cloudbees/java-build-tools:0.0.6`: 0.9.13
-    - `cloudbees/java-build-tools:0.0.5`: 0.9.11
-    - `cloudbees/java-build-tools:0.0.4`: 0.9.9
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 43.0.4
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.48.2
+-   AWS CLI: 1.9.17
+-   Azure CLI: 0.9.13
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`
--   Open Shift V3 CLI at `/usr/local/bin/oc`
-    - `cloudbees/java-build-tools:0.0.6`: 1.1.0.1
-    - `cloudbees/java-build-tools:0.0.5`: 1.0.8
-    - `cloudbees/java-build-tools:0.0.4`: 1.0.6
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.1.0.1
 -   JMeter (2.13) located in `/opt/jmeter/`
--   Kubernetes CLI at `/usr/local/bin/kubectl`
-    - `cloudbees/java-build-tools:0.0.5`: 1.1.3
-    - `cloudbees/java-build-tools:0.0.5`: 1.1.1
-    - `cloudbees/java-build-tools:0.0.4`: 1.0.1
--   MySQL Client (latest)
-    - `cloudbees/java-build-tools:0.0.5`: 5.6.27
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.1.3
+-   MySQL Client (latest): 5.6.27
 
 # Release Notes
 
@@ -83,13 +72,6 @@ See the [GitHub release notes](https://github.com/cloudbees/java-build-tools-doc
 # About this repository
 
 This repository is available on [github.com/cloudbees/java-build-tools-dockerfile/](https://github.com/cloudbees/java-build-tools-dockerfile), and the automated build is on the [Docker Hub](https://hub.docker.com/r/cloudbees/java-build-tools/).
-
-## Supported Docker versions
-
-This image has been tested with Docker version:
-- `cloudbees/java-build-tools:0.0.6`: 1.9.1
-- `cloudbees/java-build-tools:0.0.5`: 1.9.0
-- `cloudbees/java-build-tools:0.0.4`: 1.8.1
 
 # User Feedback
 

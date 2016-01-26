@@ -41,6 +41,7 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/ap
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
     iproute \
+    openssh-client \
     ca-certificates \
     openjdk-8-jdk \
     tar zip unzip \
@@ -71,7 +72,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Selenium
 #==========
 RUN  mkdir -p /opt/selenium \
-  && wget --no-verbose http://selenium-release.storage.googleapis.com/2.48/selenium-server-standalone-2.48.2.jar -O /opt/selenium/selenium-server-standalone.jar
+  && wget --no-verbose http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O /opt/selenium/selenium-server-standalone.jar
 
 #========================================
 # Add normal user with passwordless sudo
@@ -137,7 +138,7 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash \
 # See https://hub.docker.com/r/microsoft/azure-cli/~/dockerfile/
 #====================================
 
-RUN npm install --global azure-cli@0.9.13
+RUN npm install --global azure-cli@0.9.14
 
 #====================================
 # BOWER, GRUNT, GULP
@@ -149,14 +150,14 @@ RUN npm install --global grunt-cli@0.1.13 bower@1.7.2 gulp@3.9.0
 # Kubernetes CLI
 # See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
 #====================================
-RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.1.3/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.1.4/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 #====================================
 # OPENSHIFT V3 CLI
 # Only install "oc" executable, don't install "openshift", "oadmin"...
 #====================================
 RUN mkdir /var/tmp/openshift \
-      && wget -O - "https://github.com/openshift/origin/releases/download/v1.1.0.1/openshift-origin-client-tools-v1.1.0.1-bf56e23-linux-64bit.tar.gz" \
+      && wget -O - "https://github.com/openshift/origin/releases/download/v1.1.1/openshift-origin-client-tools-v1.1.1-e1d9873-linux-64bit.tar.gz" \
       | tar -C /var/tmp/openshift --strip-components=1 -zxf - \
       && mv /var/tmp/openshift/oc /usr/local/bin \
       && rm -rf /var/tmp/openshift
