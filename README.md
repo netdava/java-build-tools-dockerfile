@@ -7,6 +7,7 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`0.0.7` (*0.0.7/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.7/Dockerfile)
 -   [`0.0.6` (*0.0.6/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.6/Dockerfile)
 -   [`0.0.5` (*0.0.5/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.5/Dockerfile)
 -   [`0.0.4` (*0.0.4/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.4/Dockerfile)
@@ -21,24 +22,24 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 # Version 0.0.7
 -   OS: Ubuntu 15.04
 -   Common tools: openssh-client, unzip, wget, curl, git
--   Make (latest): 4.0
--   gcc (latest): 4.9.2-10ubuntu13
--   Java: OpenJDK 8 (latest): 1.8.0_45
--   Maven located in `/usr/share/maven/`: 3.3.9
--   Node.js: 4.2.4
+-   AWS CLI: aws-cli/1.10.0
+-   Azure CLI: 0.9.14
 -   Bower: 1.7.2
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.15.0
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 43.0.4
+-   gcc (latest): 4.9.2-10ubuntu13
 -   Grunt CLI: 0.1.13
 -   Gulp: 3.9.0
--   Web Browser tests: XVFB (latest)
--   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 43.0.4
--   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.48.2
--   AWS CLI: 1.9.17
--   Azure CLI: 0.9.14
--   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`
--   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.1.1.1
+-   Java: OpenJDK 8 (latest): 1.8.0_45
 -   JMeter (2.13) located in `/opt/jmeter/`
 -   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.1.4
+-   Make (latest): 4.0
+-   Maven located in `/usr/share/maven/`: 3.3.9
 -   MySQL Client (latest): 5.6.27
+-   Node.js: 4.2.6
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.1.1
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.49.1
+-   Web Browser tests: XVFB (latest)
 
 # Version 0.0.6
 
