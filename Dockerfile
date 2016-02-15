@@ -30,6 +30,10 @@ MAINTAINER Cyrille Le Clerc <cleclerc@cloudbees.com>
 RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/apt/sources.list \
   && echo "deb http://archive.ubuntu.com/ubuntu vivid-updates main universe\n" >> /etc/apt/sources.list
 
+RUN apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install software-properties-common \
+  && add-apt-repository -y ppa:git-core/ppa
+
 #========================
 # Miscellaneous packages
 # iproute which is surprisingly not available in ubuntu:15.04 but is available in ubuntu:latest
