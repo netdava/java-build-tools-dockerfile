@@ -76,7 +76,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Selenium
 #==========
 RUN  mkdir -p /opt/selenium \
-  && wget --no-verbose http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O /opt/selenium/selenium-server-standalone.jar
+  && wget --no-verbose http://selenium-release.storage.googleapis.com/2.52/selenium-server-standalone-2.52.0.jar -O /opt/selenium/selenium-server-standalone.jar
 
 #========================================
 # Add normal user with passwordless sudo
