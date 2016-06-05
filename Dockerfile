@@ -73,6 +73,15 @@ RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binar
 ENV MAVEN_HOME /usr/share/maven
 
 #==========
+# Ant
+#==========
+RUN curl -fsSL https://www.apache.org/dist/ant/binaries/apache-ant-1.9.7-bin.tar.gz | tar xzf - -C /usr/share \
+  && mv /usr/share/apache-ant-1.9.7 /usr/share/ant \
+  && ln -s /usr/share/ant/bin/ant /usr/bin/ant
+
+ENV ANT_HOME /usr/share/ant
+
+#==========
 # Selenium
 #==========
 RUN  mkdir -p /opt/selenium \
