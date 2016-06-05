@@ -19,25 +19,47 @@ We have decided to bundle many tools in the same image to cover as many Java use
 
 This Docker image is intended to be used with the [Jenkins CloudBees Docker Custom Build Environment Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Custom+Build+Environment+Plugin) and the [Jenkins Docker Workflow Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Workflow+Plugin).
 
-# Version 0.0.7.1
+# Version latest
 -   OS: Ubuntu 15.04
 -   Common tools: openssh-client, unzip, wget, curl, git
 -   AWS CLI: aws-cli/1.10.0
--   Azure CLI: 0.9.14
--   Bower: 1.7.2
+-   Azure CLI: 0.10.1
+-   Bower: 1.7.9
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.15.0
 -   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 43.0.4
 -   gcc (latest): 4.9.2-10ubuntu13
--   Grunt CLI: 0.1.13
--   Gulp: 3.9.0
+-   Grunt CLI: 0.1.2
+-   Gulp: 3.9.1
 -   Java: OpenJDK 8 (latest): 1.8.0_45
--   JMeter (2.13) located in `/opt/jmeter/`
--   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.1.4
+-   JMeter (3.0) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.2.3
 -   Make (latest): 4.0
 -   Maven located in `/usr/share/maven/`: 3.3.9
 -   MySQL Client (latest): 5.6.27
 -   Node.js: 4.2.6
--   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.1.1
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.2.0
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
+-   Web Browser tests: XVFB (latest)
+
+# Version 0.0.7.1
+-   OS: Ubuntu 15.04
+-   Common tools: openssh-client, unzip, wget, curl, git
+-   AWS CLI: aws-cli/1.10.35
+-   Azure CLI: 0.9.14
+-   Bower: 1.7.2
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.18.1
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 44
+-   gcc (latest): 4.9.2-10ubuntu13
+-   Grunt CLI: 0.1.13
+-   Gulp: 3.9.0
+-   Java: OpenJDK 8 (latest): 1.8.0_45
+-   JMeter (3.0) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.2.3
+-   Make (latest): 4.0
+-   Maven located in `/usr/share/maven/`: 3.3.9
+-   MySQL Client (latest): 5.6.28
+-   Node.js: 4.4.2
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.2.0
 -   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.49.1
 -   Web Browser tests: XVFB (latest)
 
