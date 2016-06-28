@@ -36,8 +36,9 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.2.3
 -   Make (latest): 4.0
 -   Maven located in `/usr/share/maven/`: 3.3.9
--   MySQL Client (latest): 5.6.27
--   Node.js: 4.4.2
+-   MySQL Client: 5.6.27
+-   Node.js at `/usr/bin/nodejs`: 4.4.2
+-   Npm at `/usr/bin/npm`: 2.14.20
 -   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.2.0
 -   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
 -   Web Browser tests: XVFB (latest)
@@ -58,8 +59,9 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.2.3
 -   Make (latest): 4.0
 -   Maven located in `/usr/share/maven/`: 3.3.9
--   MySQL Client (latest): 5.6.27
--   Node.js: 4.4.2
+-   MySQL Client: 5.6.27
+-   Node.js at `/usr/bin/nodejs`: 4.4.2
+-   Npm at `/usr/bin/npm`: 2.14.20
 -   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.2.0
 -   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
 -   Web Browser tests: XVFB (latest)
