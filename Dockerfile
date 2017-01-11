@@ -113,7 +113,6 @@ COPY config.json /opt/selenium/config.json
 ENV SCREEN_WIDTH 1360
 ENV SCREEN_HEIGHT 1020
 ENV SCREEN_DEPTH 24
-ENV DISPLAY :99.0
 
 # https://github.com/SeleniumHQ/docker-selenium/blob/master/StandaloneFirefox/Dockerfile
 

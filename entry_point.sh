@@ -9,7 +9,7 @@ function shutdown {
   wait $NODE_PID
 }
 
-xvfb-run --server-args="$DISPLAY -screen 0 $GEOMETRY -ac +extension RANDR" \
+xvfb-run --server-args="-screen 0 $GEOMETRY -ac +extension RANDR" \
   java -jar /opt/selenium/selenium-server-standalone.jar ${JAVA_OPTS} &
 NODE_PID=$!
 
