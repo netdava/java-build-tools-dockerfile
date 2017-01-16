@@ -7,6 +7,7 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`1.0.1` (*1.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/1.0.1/Dockerfile)
 -   [`1.0.0` (*1.0.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/1.0.0/Dockerfile)
 -   [`0.0.7.1` (*0.0.7.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.7.1/Dockerfile)
 -   [`0.0.6` (*0.0.6/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.6/Dockerfile)
@@ -19,27 +20,51 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # How to use this Docker image
 
 This Docker image is intended to be used with the [Jenkins CloudBees Docker Custom Build Environment Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Custom+Build+Environment+Plugin) and the [Jenkins Docker Workflow Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Workflow+Plugin).
-
 # Version latest
 -   OS: Ubuntu 15.04
 -   Common tools: openssh-client, unzip, wget, curl, git
--   AWS CLI: aws-cli/1.10.0
--   Azure CLI: 0.10.1
--   Bower: 1.7.9
--   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.15.0
--   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 43.0.4
+-   AWS CLI: aws-cli/1.11.360.10.8
+-   Azure CLI: 0.10.8
+-   Bower: 1.8.0
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 44.0
 -   gcc (latest): 4.9.2-10ubuntu13
--   Grunt CLI: 0.1.2
+-   Grunt CLI: 1.2.0
 -   Gulp: 3.9.1
 -   Java: OpenJDK 8 (latest): 1.8.0_45
--   JMeter (3.0) located in `/opt/jmeter/`
--   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.2.3
+-   JMeter (3.1) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.5.2
 -   Make (latest): 4.0
 -   Maven located in `/usr/share/maven/`: 3.3.9
--   MySQL Client: 5.6.27
+-   MySQL Client: 5.6.28
 -   Node.js at `/usr/bin/nodejs`: 4.4.2
--   Npm at `/usr/bin/npm`: 2.14.20
--   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.2.0
+-   Npm at `/usr/bin/npm`: 2.15.0
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.3.0
+-   Python/2.7.9
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
+-   Web Browser tests: XVFB (latest)
+
+# Version 1.0.1
+-   OS: Ubuntu 15.04
+-   Common tools: openssh-client, unzip, wget, curl, git
+-   AWS CLI: aws-cli/1.11.360.10.8
+-   Azure CLI: 0.10.8
+-   Bower: 1.8.0
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 44.0
+-   gcc (latest): 4.9.2-10ubuntu13
+-   Grunt CLI: 1.2.0
+-   Gulp: 3.9.1
+-   Java: OpenJDK 8 (latest): 1.8.0_45
+-   JMeter (3.1) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.5.2
+-   Make (latest): 4.0
+-   Maven located in `/usr/share/maven/`: 3.3.9
+-   MySQL Client: 5.6.28
+-   Node.js at `/usr/bin/nodejs`: 4.4.2
+-   Npm at `/usr/bin/npm`: 2.15.0
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.3.0
+-   Python/2.7.9
 -   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
 -   Web Browser tests: XVFB (latest)
 
