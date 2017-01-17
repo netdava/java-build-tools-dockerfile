@@ -28,6 +28,7 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   Bower: 1.8.0
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
 -   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 44.0
+-   Firefox Geckodriver v0.13.0 at `/usr/bin/geckodriver`
 -   gcc (latest): 4.9.2-10ubuntu13
 -   Grunt CLI: 1.2.0
 -   Gulp: 3.9.1

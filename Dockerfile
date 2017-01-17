@@ -111,6 +111,10 @@ RUN apt-get update -qqy \
     xvfb firefox \
   && rm -rf /var/lib/apt/lists/*
 
+ARG GECKO_DRIVER_VERSION=v0.13.0
+RUN wget -O - "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
+      | tar -xz -C /usr/bin
+
 #========================
 # Selenium Configuration
 #========================
