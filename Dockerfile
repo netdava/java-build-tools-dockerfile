@@ -93,6 +93,18 @@ ENV SELENIUM_VERSION 3.0.1
 RUN  mkdir -p /opt/selenium \
   && wget --no-verbose http://selenium-release.storage.googleapis.com/$SELENIUM_MAJOR_VERSION/selenium-server-standalone-$SELENIUM_VERSION.jar -O /opt/selenium/selenium-server-standalone.jar
 
+# https://github.com/SeleniumHQ/docker-selenium/blob/master/StandaloneFirefox/Dockerfile
+
+ENV SCREEN_WIDTH 1360
+ENV SCREEN_HEIGHT 1020
+ENV SCREEN_DEPTH 24
+ENV DISPLAY :99.0
+
+COPY entry_point.sh /opt/bin/entry_point.sh
+COPY functions.sh /opt/bin/functions.sh
+RUN chmod +x /opt/bin/entry_point.sh \
+  && chmod +x /opt/bin/functions.sh
+
 #========================================
 # Add normal user with passwordless sudo
 #========================================
@@ -100,8 +112,6 @@ RUN useradd jenkins --shell /bin/bash --create-home \
   && usermod -a -G sudo jenkins \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'jenkins:secret' | chpasswd
-
-# https://raw.githubusercontent.com/SeleniumHQ/docker-selenium/master/NodeFirefox/Dockerfile
 
 #===============
 # XVFB & FIREFOX
@@ -114,24 +124,6 @@ RUN apt-get update -qqy \
 ARG GECKO_DRIVER_VERSION=v0.13.0
 RUN wget -O - "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
       | tar -xz -C /usr/bin
-
-#========================
-# Selenium Configuration
-#========================
-COPY config.json /opt/selenium/config.json
-
-ENV SCREEN_WIDTH 1360
-ENV SCREEN_HEIGHT 1020
-ENV SCREEN_DEPTH 24
-ENV DISPLAY :99.0
-
-# https://github.com/SeleniumHQ/docker-selenium/blob/master/StandaloneFirefox/Dockerfile
-
-#====================================
-# Scripts to run Selenium Standalone
-#====================================
-COPY entry_point.sh /opt/bin/entry_point.sh
-RUN chmod +x /opt/bin/entry_point.sh
 
 #====================================
 # Cloud Foundry CLI
