@@ -93,6 +93,8 @@ ENV SELENIUM_VERSION 3.0.1
 RUN  mkdir -p /opt/selenium \
   && wget --no-verbose http://selenium-release.storage.googleapis.com/$SELENIUM_MAJOR_VERSION/selenium-server-standalone-$SELENIUM_VERSION.jar -O /opt/selenium/selenium-server-standalone.jar
 
+RUN pip install -U selenium
+
 # https://github.com/SeleniumHQ/docker-selenium/blob/master/StandaloneFirefox/Dockerfile
 
 ENV SCREEN_WIDTH 1360
