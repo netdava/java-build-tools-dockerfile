@@ -19,7 +19,52 @@ We have decided to bundle many tools in the same image to cover as many Java use
 
 # How to use this Docker image
 
-This Docker image is intended to be used with the [Jenkins CloudBees Docker Custom Build Environment Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Custom+Build+Environment+Plugin) and the [Jenkins Docker Workflow Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Workflow+Plugin).
+This Docker image is intended to be used with the [Jenkins Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin).
+
+## Java
+
+Sample with Maven and the Jenkins [Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin) and [Pipeline Maven Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Maven+Plugin).
+
+```
+node ("docker"){
+    git "https://github.com/cloudbees-community/game-of-life"
+    docker.image("cloudbees/java-build-tools").inside {
+        withMaven(mavenSettingsConfig:'my-maven-settings') {
+           sh "mvn clean deploy"
+        }
+    }
+}
+```
+
+## Selenium
+
+The docker image enable Selenium tests bundling Firefox and starting selenium-server-standalone (listening on the default port 4444).
+
+Sample with Java
+
+```
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+WebDriver webDriver = new RemoteWebDriver(DesiredCapabilities.firefox());
+webDriver.get("http://www.python.org");
+webDriver.getTitle();
+```
+
+Sample with Python
+
+```
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+driver = webdriver.Remote(
+   command_executor='http://127.0.0.1:4444/wd/hub',
+   desired_capabilities=DesiredCapabilities.FIREFOX)
+
+driver.get('http://python.org')
+```
+
 # Version latest
 -   OS: Ubuntu 16.04
 -   Common tools: openssh-client, unzip, wget, curl, git
@@ -27,8 +72,8 @@ This Docker image is intended to be used with the [Jenkins CloudBees Docker Cust
 -   Azure CLI: 0.10.8
 -   Bower: 1.8.0
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
--   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 50.1.0
--   Firefox Geckodriver v0.13.0 at `/usr/bin/geckodriver`
+-   Firefox at `/usr/bin/firefox`: Mozilla Firefox 50.1.0
+-   Firefox Geckodriver  at `/usr/bin/geckodriver`: v0.13.0
 -   gcc (latest): 5.4.0
 -   Grunt CLI: 1.2.0
 -   Gulp: 3.9.1
