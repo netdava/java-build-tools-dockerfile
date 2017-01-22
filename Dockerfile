@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM ubuntu:16.04
 MAINTAINER Cyrille Le Clerc <cleclerc@cloudbees.com>
 
 #
@@ -27,8 +27,10 @@ MAINTAINER Cyrille Le Clerc <cleclerc@cloudbees.com>
 #================================================
 # Customize sources for apt-get
 #================================================
-RUN  echo "deb http://archive.ubuntu.com/ubuntu vivid main universe\n" > /etc/apt/sources.list \
-  && echo "deb http://archive.ubuntu.com/ubuntu vivid-updates main universe\n" >> /etc/apt/sources.list
+RUN DISTRIB_CODENAME=$(cat /etc/*release* | grep DISTRIB_CODENAME | cut -f2 -d'=') \
+    && echo "deb http://archive.ubuntu.com/ubuntu ${DISTRIB_CODENAME} main universe\n" > /etc/apt/sources.list \
+    && echo "deb http://archive.ubuntu.com/ubuntu ${DISTRIB_CODENAME}-updates main universe\n" >> /etc/apt/sources.list \
+    && echo "deb http://security.ubuntu.com/ubuntu ${DISTRIB_CODENAME}-security main universe\n" >> /etc/apt/sources.list
 
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install software-properties-common \
@@ -60,6 +62,9 @@ RUN apt-get update -qqy \
 
 # workaround https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
 RUN [ -f "/etc/ssl/certs/java/cacerts" ] || /var/lib/dpkg/info/ca-certificates-java.postinst configure
+
+# workaround "You are using pip version 8.1.1, however version 9.0.1 is available."
+RUN pip install --upgrade pip setuptools
 
 #==========
 # Maven
@@ -115,13 +120,41 @@ RUN useradd jenkins --shell /bin/bash --create-home \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'jenkins:secret' | chpasswd
 
-#===============
-# XVFB & FIREFOX
-#===============
+#=====
+# XVFB
+#=====
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
-    xvfb firefox \
+    xvfb \
   && rm -rf /var/lib/apt/lists/*
+
+#=========
+# Firefox
+#=========
+ARG FIREFOX_VERSION=50.1.0
+
+# don't install firefox with apt-get because there are some problems,
+# install the binaries downloaded from mozilla
+# see https://github.com/SeleniumHQ/docker-selenium/blob/3.0.1-fermium/NodeFirefox/Dockerfile#L13
+# workaround "D-Bus library appears to be incorrectly set up; failed to read machine uuid"
+# run "dbus-uuidgen > /var/lib/dbus/machine-id"
+
+RUN apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install firefox dbus \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
+  && wget --no-verbose -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
+  && apt-get -y purge firefox \
+  && rm -rf /opt/firefox \
+  && tar -C /opt -xjf /tmp/firefox.tar.bz2 \
+  && rm /tmp/firefox.tar.bz2 \
+  && mv /opt/firefox /opt/firefox-$FIREFOX_VERSION \
+  && ln -fs /opt/firefox-$FIREFOX_VERSION/firefox /usr/bin/firefox
+
+RUN dbus-uuidgen > /var/lib/dbus/machine-id
+
+#======================
+# Firefox GECKO DRIVER
+#======================
 
 ARG GECKO_DRIVER_VERSION=v0.13.0
 RUN wget -O - "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
@@ -147,7 +180,7 @@ RUN mkdir -p /home/jenkins/.local/bin/ \
 # NODE JS
 # See https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 #====================================
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash \
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
     && apt-get install -y nodejs
 
 #====================================
