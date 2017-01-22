@@ -21,29 +21,29 @@ We have decided to bundle many tools in the same image to cover as many Java use
 
 This Docker image is intended to be used with the [Jenkins CloudBees Docker Custom Build Environment Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Custom+Build+Environment+Plugin) and the [Jenkins Docker Workflow Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Workflow+Plugin).
 # Version latest
--   OS: Ubuntu 15.04
+-   OS: Ubuntu 16.04
 -   Common tools: openssh-client, unzip, wget, curl, git
--   AWS CLI: aws-cli/1.11.360.10.8
+-   AWS CLI: aws-cli/1.11.41
 -   Azure CLI: 0.10.8
 -   Bower: 1.8.0
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
--   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 44.0
+-   Firefox (latest) at `/usr/bin/firefox`: Mozilla Firefox 50.1.0
 -   Firefox Geckodriver v0.13.0 at `/usr/bin/geckodriver`
--   gcc (latest): 4.9.2-10ubuntu13
+-   gcc (latest): 5.4.0
 -   Grunt CLI: 1.2.0
 -   Gulp: 3.9.1
--   Java: OpenJDK 8 (latest): 1.8.0_45
+-   Java: OpenJDK 8 (latest): 1.8.0_111
 -   JMeter (3.1) located in `/opt/jmeter/`
 -   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.5.2
--   Make (latest): 4.0
+-   Make (latest): 4.1
 -   Maven located in `/usr/share/maven/`: 3.3.9
--   MySQL Client: 5.6.28
--   Node.js at `/usr/bin/nodejs`: 4.4.2
--   Npm at `/usr/bin/npm`: 2.15.0
+-   MySQL Client: 5.7.17
+-   Node.js at `/usr/bin/nodejs`: 6.9.4
+-   Npm at `/usr/bin/npm`: 3.10.10
 -   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.3.0
--   Python/2.7.9
+-   Python/2.7.12
 -   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
--   Web Browser tests: XVFB (latest)
+-   XVFB: 2:1.18.4
 
 # Version 1.0.1
 -   OS: Ubuntu 15.04
