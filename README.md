@@ -40,7 +40,7 @@ node ("docker"){
 
 The docker image enable Selenium tests bundling Firefox and starting selenium-server-standalone (listening on the default port 4444).
 
-Sample with Java
+### Selenium Sample with Java
 
 ```
 import org.openqa.selenium.WebDriver;
@@ -52,7 +52,7 @@ webDriver.get("http://www.python.org");
 webDriver.getTitle();
 ```
 
-Sample with Python
+### Selenium Sample with Python
 
 ```
 from selenium import webdriver
@@ -72,8 +72,8 @@ driver.get('http://python.org')
 -   Azure CLI: 0.10.8
 -   Bower: 1.8.0
 -   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
--   Firefox at `/usr/bin/firefox`: Mozilla Firefox 50.1.0
--   Firefox Geckodriver  at `/usr/bin/geckodriver`: v0.13.0
+-   Firefox at `/usr/bin/firefox`: 50.1.0
+-   Firefox Geckodriver at `/usr/bin/geckodriver`: v0.13.0
 -   gcc (latest): 5.4.0
 -   Grunt CLI: 1.2.0
 -   Gulp: 3.9.1
