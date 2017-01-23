@@ -7,6 +7,7 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`2.0.0` (*2.0.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.0.0/Dockerfile)
 -   [`1.0.1` (*1.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/1.0.1/Dockerfile)
 -   [`1.0.0` (*1.0.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/1.0.0/Dockerfile)
 -   [`0.0.7.1` (*0.0.7.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/0.0.7.1/Dockerfile)
@@ -66,6 +67,32 @@ driver.get('http://python.org')
 ```
 
 # Version latest
+-   OS: Ubuntu 16.04
+-   Common tools: openssh-client, unzip, wget, curl, git
+-   AWS CLI: aws-cli/1.11.41
+-   Azure CLI: 0.10.8
+-   Bower: 1.8.0
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.23.1
+-   Firefox at `/usr/bin/firefox`: 50.1.0
+-   Firefox Geckodriver at `/usr/bin/geckodriver`: v0.13.0
+-   gcc (latest): 5.4.0
+-   Grunt CLI: 1.2.0
+-   Gulp: 3.9.1
+-   Java: OpenJDK 8 (latest): 1.8.0_111
+-   JMeter (3.1) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.5.2
+-   Make (latest): 4.1
+-   Maven located in `/usr/share/maven/`: 3.3.9
+-   MySQL Client: 5.7.17
+-   Node.js at `/usr/bin/nodejs`: 6.9.4
+-   Npm at `/usr/bin/npm`: 3.10.10
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 1.3.0
+-   Python/2.7.12
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 2.53
+-   XVFB: 2:1.18.4
+
+# Version 2.0.0
+
 -   OS: Ubuntu 16.04
 -   Common tools: openssh-client, unzip, wget, curl, git
 -   AWS CLI: aws-cli/1.11.41
