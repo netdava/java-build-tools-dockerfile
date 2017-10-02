@@ -55,6 +55,7 @@ RUN apt-get update -qqy \
     git \
     build-essential \
     less nano tree \
+    jq \
     python python-pip groff \
     rlwrap \
   && rm -rf /var/lib/apt/lists/* \
@@ -69,7 +70,7 @@ RUN pip install --upgrade pip setuptools
 #==========
 # Maven
 #==========
-ENV MAVEN_VERSION 3.3.9
+ENV MAVEN_VERSION 3.5.0
 
 RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
@@ -81,7 +82,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Ant
 #==========
 
-ENV ANT_VERSION 1.9.8
+ENV ANT_VERSION 1.10.1
 
 RUN curl -fsSL https://www.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-ant-$ANT_VERSION /usr/share/ant \
@@ -93,8 +94,8 @@ ENV ANT_HOME /usr/share/ant
 # Selenium
 #==========
 
-ENV SELENIUM_MAJOR_VERSION 3.0
-ENV SELENIUM_VERSION 3.0.1
+ENV SELENIUM_MAJOR_VERSION 3.6
+ENV SELENIUM_VERSION 3.6.0
 RUN  mkdir -p /opt/selenium \
   && wget --no-verbose http://selenium-release.storage.googleapis.com/$SELENIUM_MAJOR_VERSION/selenium-server-standalone-$SELENIUM_VERSION.jar -O /opt/selenium/selenium-server-standalone.jar
 
@@ -131,7 +132,7 @@ RUN apt-get update -qqy \
 #=========
 # Firefox
 #=========
-ARG FIREFOX_VERSION=50.1.0
+ARG FIREFOX_VERSION=56.0
 
 # don't install firefox with apt-get because there are some problems,
 # install the binaries downloaded from mozilla
@@ -156,7 +157,7 @@ RUN dbus-uuidgen > /var/lib/dbus/machine-id
 # Firefox GECKO DRIVER
 #======================
 
-ARG GECKO_DRIVER_VERSION=v0.13.0
+ARG GECKO_DRIVER_VERSION=v0.19.0
 RUN wget -O - "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
       | tar -xz -C /usr/bin
 
@@ -186,6 +187,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
 #====================================
 # AZURE CLI
 # See https://hub.docker.com/r/microsoft/azure-cli/~/dockerfile/
+# TODO bump azure CLI to v2 https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 #====================================
 
 ENV AZURE_CLI_VERSION 0.10.8
@@ -195,13 +197,13 @@ RUN npm install --global azure-cli@$AZURE_CLI_VERSION
 # BOWER, GRUNT, GULP
 #====================================
 
-RUN npm install --global grunt-cli@1.2.0 bower@1.8.0 gulp@3.9.1
+RUN npm install --global grunt-cli@1.2.0 bower@1.8.2 gulp@3.9.1
 
 #====================================
 # Kubernetes CLI
 # See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
 #====================================
-RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.5.2/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 #====================================
 # OPENSHIFT V3 CLI
@@ -209,16 +211,17 @@ RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.5.2/bin/li
 # See https://github.com/openshift/origin/releases
 #====================================
 RUN mkdir /var/tmp/openshift \
-      && wget -O - "https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz" \
+      && wget -O - "https://github.com/openshift/origin/releases/download/v3.6.0/openshift-origin-client-tools-v3.6.0-c4dd4cf-linux-64bit.tar.gz" \
       | tar -C /var/tmp/openshift --strip-components=1 -zxf - \
       && mv /var/tmp/openshift/oc /usr/local/bin \
       && rm -rf /var/tmp/openshift
+
 
 #====================================
 # JMETER
 #====================================
 RUN mkdir /opt/jmeter \
-      && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-3.1.tgz" \
+      && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-3.3.tgz" \
       | tar -xz --strip=1 -C /opt/jmeter
 
 #====================================
