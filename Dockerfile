@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Cyrille Le Clerc <cleclerc@cloudbees.com>
+LABEL maintainer="Cyrille Le Clerc <cleclerc@cloudbees.com>"
 
 #
 # Licensed to the Apache Software Foundation (ASF) under one or more
