@@ -70,7 +70,7 @@ RUN pip install --upgrade pip setuptools
 #==========
 # Maven
 #==========
-ENV MAVEN_VERSION 3.5.0
+ENV MAVEN_VERSION 3.5.3
 
 RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
@@ -82,7 +82,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Ant
 #==========
 
-ENV ANT_VERSION 1.10.1
+ENV ANT_VERSION 1.10.3
 
 RUN curl -fsSL https://www.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-ant-$ANT_VERSION /usr/share/ant \
@@ -94,8 +94,8 @@ ENV ANT_HOME /usr/share/ant
 # Selenium
 #==========
 
-ENV SELENIUM_MAJOR_VERSION 3.6
-ENV SELENIUM_VERSION 3.6.0
+ENV SELENIUM_MAJOR_VERSION 3.11
+ENV SELENIUM_VERSION 3.11.0
 RUN  mkdir -p /opt/selenium \
   && wget --no-verbose http://selenium-release.storage.googleapis.com/$SELENIUM_MAJOR_VERSION/selenium-server-standalone-$SELENIUM_VERSION.jar -O /opt/selenium/selenium-server-standalone.jar
 
@@ -132,7 +132,7 @@ RUN apt-get update -qqy \
 #=========
 # Firefox
 #=========
-ARG FIREFOX_VERSION=56.0
+ARG FIREFOX_VERSION=60.0b9
 
 # don't install firefox with apt-get because there are some problems,
 # install the binaries downloaded from mozilla
@@ -157,7 +157,7 @@ RUN dbus-uuidgen > /var/lib/dbus/machine-id
 # Firefox GECKO DRIVER
 #======================
 
-ARG GECKO_DRIVER_VERSION=v0.19.0
+ARG GECKO_DRIVER_VERSION=v0.20.0
 RUN wget -O - "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
       | tar -xz -C /usr/bin
 
@@ -181,29 +181,31 @@ RUN mkdir -p /home/jenkins/.local/bin/ \
 # NODE JS
 # See https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 #====================================
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash \
     && apt-get install -y nodejs
 
 #====================================
 # AZURE CLI
-# See https://hub.docker.com/r/microsoft/azure-cli/~/dockerfile/
-# TODO bump azure CLI to v2 https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+# https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
 #====================================
 
-ENV AZURE_CLI_VERSION 0.10.8
-RUN npm install --global azure-cli@$AZURE_CLI_VERSION
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ xenial main" | tee /etc/apt/sources.list.d/azure-cli.list
+RUN apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
+RUN apt-get -qqy --no-install-recommends install apt-transport-https \
+  && apt-get update -qqy \
+  && apt-get install -qqy --no-install-recommends azure-cli
 
 #====================================
 # BOWER, GRUNT, GULP
 #====================================
 
-RUN npm install --global grunt-cli@1.2.0 bower@1.8.2 gulp@3.9.1
+RUN npm install --global grunt-cli@1.2.0 bower@1.8.4 gulp@4.0.0
 
 #====================================
 # Kubernetes CLI
 # See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
 #====================================
-RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 #====================================
 # OPENSHIFT V3 CLI
@@ -211,7 +213,7 @@ RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/li
 # See https://github.com/openshift/origin/releases
 #====================================
 RUN mkdir /var/tmp/openshift \
-      && wget -O - "https://github.com/openshift/origin/releases/download/v3.6.0/openshift-origin-client-tools-v3.6.0-c4dd4cf-linux-64bit.tar.gz" \
+      && wget -O - "https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz" \
       | tar -C /var/tmp/openshift --strip-components=1 -zxf - \
       && mv /var/tmp/openshift/oc /usr/local/bin \
       && rm -rf /var/tmp/openshift
@@ -221,7 +223,7 @@ RUN mkdir /var/tmp/openshift \
 # JMETER
 #====================================
 RUN mkdir /opt/jmeter \
-      && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-3.3.tgz" \
+      && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.tgz" \
       | tar -xz --strip=1 -C /opt/jmeter
 
 #====================================
