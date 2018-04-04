@@ -7,6 +7,7 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
+-   [`2.2.0` (*2.2.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.1.0/Dockerfile)
 -   [`2.1.0` (*2.1.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.1.0/Dockerfile)
 -   [`2.0.0` (*2.0.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.0.0/Dockerfile)
 -   [`1.0.1` (*1.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/1.0.1/Dockerfile)
