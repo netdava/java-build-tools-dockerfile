@@ -58,6 +58,7 @@ RUN apt-get update -qqy \
     jq \
     python python-pip groff \
     rlwrap \
+    rsync \
   && rm -rf /var/lib/apt/lists/* \
   && sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
 
@@ -82,7 +83,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Ant
 #==========
 
-ENV ANT_VERSION 1.10.3
+ENV ANT_VERSION 1.10.4
 
 RUN curl -fsSL https://www.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-ant-$ANT_VERSION /usr/share/ant \
@@ -190,6 +191,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash \
 #====================================
 
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ xenial main" | tee /etc/apt/sources.list.d/azure-cli.list
+RUN curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
 RUN apt-get -qqy --no-install-recommends install apt-transport-https \
   && apt-get update -qqy \
