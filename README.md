@@ -70,7 +70,7 @@ driver.get('http://python.org')
 
 # Version latest
 -   OS: Ubuntu 16.04
--   Common tools: openssh-client, unzip, wget, curl, git, jq
+-   Common tools: openssh-client, unzip, wget, curl, git, jq, rsync
 -   AWS CLI: aws-cli/1.14.70
 -   Azure CLI: 2.0.30
 -   Bower: 1.8.4
