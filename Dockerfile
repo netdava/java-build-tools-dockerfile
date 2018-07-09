@@ -71,7 +71,7 @@ RUN pip install --upgrade pip setuptools
 #==========
 # Maven
 #==========
-ENV MAVEN_VERSION 3.5.3
+ENV MAVEN_VERSION 3.5.4
 
 RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
@@ -95,8 +95,8 @@ ENV ANT_HOME /usr/share/ant
 # Selenium
 #==========
 
-ENV SELENIUM_MAJOR_VERSION 3.11
-ENV SELENIUM_VERSION 3.11.0
+ENV SELENIUM_MAJOR_VERSION 3.13
+ENV SELENIUM_VERSION 3.13.0
 RUN  mkdir -p /opt/selenium \
   && wget --no-verbose http://selenium-release.storage.googleapis.com/$SELENIUM_MAJOR_VERSION/selenium-server-standalone-$SELENIUM_VERSION.jar -O /opt/selenium/selenium-server-standalone.jar
 
@@ -133,7 +133,7 @@ RUN apt-get update -qqy \
 #=========
 # Firefox
 #=========
-ARG FIREFOX_VERSION=60.0b9
+ARG FIREFOX_VERSION=60.1.0esr
 
 # don't install firefox with apt-get because there are some problems,
 # install the binaries downloaded from mozilla
@@ -158,7 +158,7 @@ RUN dbus-uuidgen > /var/lib/dbus/machine-id
 # Firefox GECKO DRIVER
 #======================
 
-ARG GECKO_DRIVER_VERSION=v0.20.0
+ARG GECKO_DRIVER_VERSION=v0.21.0
 RUN wget -O - "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
       | tar -xz -C /usr/bin
 
@@ -207,7 +207,7 @@ RUN npm install --global grunt-cli@1.2.0 bower@1.8.4 gulp@4.0.0
 # Kubernetes CLI
 # See http://kubernetes.io/v1.0/docs/getting-started-guides/aws/kubectl.html
 #====================================
-RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
+RUN curl https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 #====================================
 # OPENSHIFT V3 CLI
