@@ -7,7 +7,8 @@ We have decided to bundle many tools in the same image to cover as many Java use
 # Supported tags and respective `Dockerfile` links
 
 -   [`latest` (*latest/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/master/Dockerfile)
--   [`2.2.0` (*2.2.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.1.0/Dockerfile)
+-   [`2.3.0` (*2.3.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.3.0/Dockerfile)
+-   [`2.2.0` (*2.2.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.2.0/Dockerfile)
 -   [`2.1.0` (*2.1.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.1.0/Dockerfile)
 -   [`2.0.0` (*2.0.0/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/2.0.0/Dockerfile)
 -   [`1.0.1` (*1.0.1/Dockerfile*)](https://github.com/cloudbees/java-build-tools-dockerfile/blob/1.0.1/Dockerfile)
@@ -69,6 +70,32 @@ driver.get('http://python.org')
 ```
 
 # Version latest
+-   OS: Ubuntu 16.04
+-   Common tools: openssh-client, unzip, wget, curl, git, jq, rsync
+-   Ant 1.10.4
+-   AWS CLI: aws-cli/1.15.53
+-   Azure CLI: 2.0.41
+-   Bower: 1.8.4
+-   Cloud Foundry CLI (latest) at `/usr/local/bin/cf`: 6.37.0
+-   Firefox at `/usr/bin/firefox`: 60.1.0esr
+-   Firefox Geckodriver at `/usr/bin/geckodriver`: v0.21.0
+-   gcc (latest): 5.4.0
+-   Grunt CLI: 1.2.0
+-   Gulp: 4.0.0
+-   Java: OpenJDK 8 (latest): 1.8.0_162
+-   JMeter (4.0) located in `/opt/jmeter/`
+-   Kubernetes CLI at `/usr/local/bin/kubectl`: 1.10.0
+-   Make (latest): 4.1
+-   Maven located in `/usr/share/maven/`: 3.5.4
+-   MySQL Client: 5.7.22
+-   Node.js at `/usr/bin/nodejs`: 8.11.3
+-   Npm at `/usr/bin/npm`: 5.6.0
+-   Open Shift V3 CLI at `/usr/local/bin/oc`: 3.9.0
+-   Python/2.7.12
+-   Selenium at `/opt/selenium/selenium-server-standalone.jar`: 3.13.0
+-   XVFB: 2:1.18.4
+
+# Version 2.3.0
 -   OS: Ubuntu 16.04
 -   Common tools: openssh-client, unzip, wget, curl, git, jq, rsync
 -   Ant 1.10.4
