@@ -198,10 +198,13 @@ RUN apt-get -qqy --no-install-recommends install apt-transport-https \
   && apt-get install -qqy --no-install-recommends azure-cli
 
 #====================================
-# BOWER, GRUNT, GULP
+# BOWER, GRUNT, GULP, Yarn
 #====================================
 
-RUN npm install --global grunt-cli@1.2.0 bower@1.8.4 gulp@4.0.0
+RUN npm install --global grunt-cli@1.2.0 bower@1.8.4 gulp@4.0.0 \
+    && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update && apt-get install yarn
 
 #====================================
 # Kubernetes CLI
@@ -235,6 +238,24 @@ RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
     mysql-client \
   && rm -rf /var/lib/apt/lists/*
+
+#====================================
+# SDKMAN
+#====================================
+
+ENV SDKMAN_DIR /usr/local/sdkman
+
+RUN curl -s get.sdkman.io | bash \
+    && set -x \
+    && echo "sdkman_auto_answer=true" > $SDKMAN_DIR/etc/config \
+    && echo "sdkman_auto_selfupdate=false" >> $SDKMAN_DIR/etc/config \
+    && echo "sdkman_insecure_ssl=false" >> $SDKMAN_DIR/etc/config
+
+#====================================
+# SDKMAN/gradle
+#====================================
+
+RUN /bin/bash -c "source $SDKMAN_DIR/bin/sdkman-init.sh ; sdk install gradle; sdk version"
 
 USER jenkins
 
